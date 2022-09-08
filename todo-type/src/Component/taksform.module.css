@@ -1,0 +1,39 @@
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form input {
+    padding: 8px 15px;
+    margin-bottom: 1.5em;
+    border-radius: 0px;
+    border:1px solid #244354 ;
+}
+
+.form input[ type='submit']{
+  background-color: rgb(241, 89, 34);
+  border: 1px solid rgb(241, 89, 34);
+  color: black;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.form input[ type='submit']:hover{
+  background-color: crimson;
+  color: dimgrey;
+}
+
+
+.input_container{
+ display: flex;
+ flex-direction: column;
+ text-align: left;
+}
+
+.input_container label{
+    font-weight: bold;
+    margin: .4em;
+}
