@@ -4,6 +4,8 @@ import Header from './Component/header/header';
 import Footer from './Component/footer/footer';
 
 import styles from "./app.module.css"
+import Taksform from './Component/Tasks.form';
+import TaksList from './Component/Tasks.list';
 
 
 function App() {
@@ -11,7 +13,17 @@ function App() {
     <div>
       <Header/>
         <main className={styles.main} >
-        <h2>Inside here is my insights!!!</h2>
+
+         <div>
+           <h2>What do you do ?</h2>
+            <Taksform btnSend="Create tasks" />
+         </div>  
+        
+         <div>
+             <h1>Your daily tasks:</h1>
+             <TaksList/>
+         </div> 
+        
         </main>
       <Footer/>
     </div>
