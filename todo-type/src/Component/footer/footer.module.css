@@ -1,9 +1,13 @@
 .footer {
-    text-align: center;
     color:  rgb(243, 255, 243);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 200px;
-    background-color: rgb(13, 13, 13);
+    background-color: rgba(17, 192, 205, 0.662);
+}
+
+.footer span {
+    font-weight: bold;
+    color: rgb(243, 255, 243);
 }
