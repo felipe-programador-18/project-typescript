@@ -7,6 +7,8 @@ import styles from "./app.module.css"
 import Taksform from './Component/Tasks.form';
 import TaksList from './Component/Tasks.list';
 
+import {ITasks} from './Interface/Tasks'
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
          <div>
              <h1>Your daily tasks:</h1>
              <TaksList/>
+             
          </div> 
         
         </main>

@@ -1,4 +1,7 @@
-import React, {useState, ChangeEvent } from 'react';
+import React, {useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import {ITasks} from '../Interface/Tasks'
+import styles from './taksform.module.css'
+
 
 export interface IAppProps {
     btnSend: string
@@ -6,34 +9,51 @@ export interface IAppProps {
 
 const Taksform = ({btnSend}: IAppProps) => {
     
-    const [form, setForm] = useState<String| null>('')
-    const HandSubmit = (e:ChangeEvent <HTMLInputElement> ) => {
+    const [id, setId] = useState<number>(0)
+    const [title, setTitle] = useState<string>("")
+    const [hard, setHard] = useState<number>(0)
+
+    const HandChange= (e:ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
-        setForm(e.target.value)
+        if(e.target.name === 'title'){
+          setTitle(e.target.value)
+        }else{
+          setHard(parseInt(e.target.value))
+        }
+
+        console.log(title)
     }
-   
+
+    
+    const  addTaksProject = () =>{
+        
+    }
+    
+    useEffect(() => {
+
+    },[])
    
    
     return (
-    <div>
-      <form>
-       <div> 
-         <label>Title</label>
-            <input type="text" name='title' placeholder='write your tasks' onChange={HandSubmit} />
-            {form}
+   
+      <form onSubmit={addTaksProject} className={styles.form} >
+       <div className={styles.input_container} > 
+         <label>Title:</label>
+            <input type="text" name='title' placeholder='write your tasks' onChange={HandChange} />
+            
         </div> 
         
-        <div> 
+        <div className={styles.input_container} > 
          <label>Hard tasks.</label>
-            <input type="text" name='title' placeholder='how hard is your tasks?' onChange={HandSubmit} />
-            {form}
+            <input type="text" name='title' placeholder='how hard is your tasks?' onChange={HandChange} />
+            
         </div>
 
         <input type="submit" value={btnSend} />    
           
       </form>
       
-    </div>
+  
     );
 }
 
