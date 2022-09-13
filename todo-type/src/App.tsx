@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React,{useState} from 'react';
 import Header from './Component/header/header';
 import Footer from './Component/footer/footer';
 
@@ -11,6 +11,9 @@ import {ITasks} from './Interface/Tasks'
 
 
 function App() {
+  const [taksItem, setTasks] = useState<ITasks[]>([])
+  
+  
   return (
     <div>
       <Header/>
@@ -18,7 +21,7 @@ function App() {
 
          <div>
            <h2>What do you do ?</h2>
-            <Taksform btnSend="Create tasks" />
+            <Taksform btnSend="Create tasks" taksItem={taksItem} />
          </div>  
         
          <div>

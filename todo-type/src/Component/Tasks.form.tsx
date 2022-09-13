@@ -4,10 +4,11 @@ import styles from './taksform.module.css'
 
 
 export interface IAppProps {
-    btnSend: string
+    btnSend: string;
+    taksItem: ITasks[];
 }
 
-const Taksform = ({btnSend}: IAppProps) => {
+const Taksform = ({btnSend, taksItem }: IAppProps) => {
     
     const [id, setId] = useState<number>(0)
     const [title, setTitle] = useState<string>("")
@@ -20,8 +21,6 @@ const Taksform = ({btnSend}: IAppProps) => {
         }else{
           setHard(parseInt(e.target.value))
         }
-
-        console.log(title)
     }
 
     
