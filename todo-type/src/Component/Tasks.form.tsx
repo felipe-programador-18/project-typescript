@@ -6,14 +6,29 @@ import styles from './taksform.module.css'
 export interface IAppProps {
     btnSend: string;
     taksItem: ITasks[];
+    setTaskList?: React.Dispatch<React.SetStateAction <ITasks[]>>
 }
 
-const Taksform = ({btnSend, taksItem }: IAppProps) => {
+const Taksform = ({btnSend, taksItem, setTaskList }: IAppProps) => {
     
     const [id, setId] = useState<number>(0)
     const [title, setTitle] = useState<string>("")
     const [hard, setHard] = useState<number>(0)
 
+    
+    const addTaksProject = (e:FormEvent <HTMLFormElement> ) =>{
+      e.preventDefault()
+
+      const id = Math.floor(Math.random() *1000)
+      const newTasks: ITasks= {id, title, hard}  
+        
+      setTaskList!([...taksItem, newTasks])
+      setTitle("")
+      setHard(0)
+      console.log('testing here now tasks',taksItem)
+    }
+    
+    
     const HandChange= (e:ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         if(e.target.name === 'title'){
@@ -23,10 +38,6 @@ const Taksform = ({btnSend, taksItem }: IAppProps) => {
         }
     }
 
-    
-    const  addTaksProject = () =>{
-        
-    }
     
     useEffect(() => {
 
@@ -38,13 +49,21 @@ const Taksform = ({btnSend, taksItem }: IAppProps) => {
       <form onSubmit={addTaksProject} className={styles.form} >
        <div className={styles.input_container} > 
          <label>Title:</label>
-            <input type="text" name='title' placeholder='write your tasks' onChange={HandChange} />
+            <input type="text" 
+            name='title' 
+            placeholder='write your tasks'
+            value={title}
+            onChange={HandChange} />
             
         </div> 
         
         <div className={styles.input_container} > 
          <label>Hard tasks.</label>
-            <input type="text" name='title' placeholder='how hard is your tasks?' onChange={HandChange} />
+            <input type="text" 
+            name='hard' 
+            placeholder='how hard is your tasks?'
+            onChange={HandChange}
+            value={hard} />
             
         </div>
 
