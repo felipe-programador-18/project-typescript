@@ -28,12 +28,18 @@ function App() {
   
   return (
     <div>
-     <Modal/> 
+     <Modal 
+      children={<Taksform   
+      btnSend="Edit your tasks:" 
+      taksItem={taksItem}
+      setTaskList={setTaskList}
+      />} />
+
       <Header/>
         <main className={styles.main} >
 
          <div>
-           <h2>What do you do ?</h2>
+           <h2>What do you do here?</h2>
             <Taksform 
              btnSend="Create tasks" 
              taksItem={taksItem}
