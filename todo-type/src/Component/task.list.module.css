@@ -1,0 +1,24 @@
+.tasks{
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto ;
+    border-bottom: 1px solid #434544 ;
+    padding: 1px;
+}
+
+
+.details{
+ font-size: bold;
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.action{
+ display: flex;
+ justify-content: center;
+}
+
+.action i {
+ margin: .2em;
+ background-color: #434544;
+ padding: .2em;
+}
