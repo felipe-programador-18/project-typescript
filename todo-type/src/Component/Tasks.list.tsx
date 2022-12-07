@@ -6,9 +6,10 @@ import { ITasks } from '../Interface/Tasks';
 export interface IAppProps {
 taskList: ITasks[];
 handleDeleted(id:number): void
+HandleEdit(tasks: ITasks): void
 }
 
-const TaksList =  ({taskList, handleDeleted}: IAppProps) =>  {
+const TaksList =  ({taskList, handleDeleted, HandleEdit}: IAppProps) =>  {
   
     return (
     <>
@@ -28,7 +29,8 @@ const TaksList =  ({taskList, handleDeleted}: IAppProps) =>  {
           </div>
           
           <div className={styles.action} >
-           <i className='bi bi-pencil' > </i>
+           <i className='bi bi-pencil'
+            onClick={() => HandleEdit(tasks)}  > </i>
            <i className='bi bi-trash'
             onClick={()=>{handleDeleted(tasks.id)} } ></i>
           </div>

@@ -6,26 +6,33 @@ import styles from './taksform.module.css'
 export interface IAppProps {
     btnSend: string;
     taksItem: ITasks[];
-    setTaskList?: React.Dispatch<React.SetStateAction <ITasks[]>>
+    setTaskList?: React.Dispatch<React.SetStateAction <ITasks[]>>;
+    tasks?: ITasks | null;
+    HandleUpdate?(id: number, title: string, hard:number): void; 
 }
 
-const Taksform = ({btnSend, taksItem, setTaskList }: IAppProps) => {
+const Taksform = ({btnSend, taksItem, setTaskList,HandleUpdate}: IAppProps) => {
     
     const [id, setId] = useState<number>(0)
     const [title, setTitle] = useState<string>("")
     const [hard, setHard] = useState<number>(0)
 
     
-    const addTaksProject = (e:FormEvent <HTMLFormElement> ) =>{
+    const addTaksProject = (e:FormEvent <HTMLFormElement>) =>{
       e.preventDefault()
 
+
+     if(HandleUpdate){
+        HandleUpdate(id, title, hard)
+     }else{
+      
       const id = Math.floor(Math.random() *1000)
       const newTasks: ITasks= {id, title, hard}  
         
       setTaskList!([...taksItem, newTasks])
       setTitle("")
       setHard(0)
-      console.log('testing here now tasks',taksItem)
+     }
     }
     
     

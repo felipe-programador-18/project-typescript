@@ -15,7 +15,9 @@ import {ITasks} from './Interface/Tasks'
 
 function App() {
   const [taksItem,setTaskList] = useState<ITasks[]>([])
-  
+  const [taskUpdate , setTaskUpdate] = useState<ITasks|null>(null)  
+
+
 
   const deletedTasks = (id:number) => {
    setTaskList(
@@ -25,6 +27,31 @@ function App() {
    )
   }
 
+  const HideorShowModal = (display: boolean) => {
+    const modal = document.querySelector("#modal")
+    if(display){
+      modal!.classList.remove("hide")
+    }else{
+      modal!.classList.add("hide")
+    }
+
+  }
+
+  const EditTasks =( tasks: ITasks ):void => {
+    HideorShowModal(true)
+    setTaskUpdate(tasks)
+  }
+  
+
+  const UpdateTask =(id: number, title: string, hard:number)=> {
+   
+    const updatedTasks: ITasks = {id,title,hard}
+    const updateList =  taksItem.map((task) => {
+      return task.id === updatedTasks.id ? updatedTasks : task
+    })
+    setTaskList(updateList)
+    HideorShowModal(false)
+  }
   
   return (
     <div>
@@ -32,7 +59,8 @@ function App() {
       children={<Taksform   
       btnSend="Edit your tasks:" 
       taksItem={taksItem}
-      setTaskList={setTaskList}
+      tasks ={taskUpdate}
+      HandleUpdate={UpdateTask}
       />} />
 
       <Header/>
@@ -51,7 +79,7 @@ function App() {
             <TaksList 
               taskList={taksItem} 
               handleDeleted={deletedTasks}
-              
+              HandleEdit={EditTasks} 
               />
              
          </div> 
