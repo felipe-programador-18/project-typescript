@@ -20,8 +20,7 @@ const Taksform = ({btnSend, taksItem, setTaskList,HandleUpdate}: IAppProps) => {
     
     const addTaksProject = (e:FormEvent <HTMLFormElement>) =>{
       e.preventDefault()
-
-
+      
      if(HandleUpdate){
         HandleUpdate(id, title, hard)
      }else{
