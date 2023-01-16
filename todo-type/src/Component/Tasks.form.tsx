@@ -11,12 +11,19 @@ export interface IAppProps {
     HandleUpdate?(id: number, title: string, hard:number): void; 
 }
 
-const Taksform = ({btnSend, taksItem, setTaskList,HandleUpdate}: IAppProps) => {
+const Taksform = ({btnSend, tasks ,taksItem, setTaskList,HandleUpdate}: IAppProps) => {
     
     const [id, setId] = useState<number>(0)
     const [title, setTitle] = useState<string>("")
     const [hard, setHard] = useState<number>(0)
-
+    
+    useEffect(() => {
+      if(tasks){
+        setId(tasks.id)
+        setTitle(tasks.title)
+        setHard(tasks.hard)
+      }
+    },[tasks])
     
     const addTaksProject = (e:FormEvent <HTMLFormElement>) =>{
       e.preventDefault()
@@ -43,13 +50,8 @@ const Taksform = ({btnSend, taksItem, setTaskList,HandleUpdate}: IAppProps) => {
           setHard(parseInt(e.target.value))
         }
     }
-
+   
     
-    useEffect(() => {
-
-    },[])
-   
-   
     return (
    
       <form onSubmit={addTaksProject} className={styles.form} >
