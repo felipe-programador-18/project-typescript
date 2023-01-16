@@ -30,9 +30,11 @@ const TaksList =  ({taskList, handleDeleted, HandleEdit}: IAppProps) =>  {
           
           <div className={styles.action} >
            <i className='bi bi-pencil'
-            onClick={() => HandleEdit(tasks)}  > </i>
+            onClick={() => HandleEdit(tasks)}  
+            />
+
            <i className='bi bi-trash'
-            onClick={()=>{handleDeleted(tasks.id)} } ></i>
+            onClick={()=>{handleDeleted(tasks.id)} } />
           </div>
       
         </div>)) }
